@@ -1,12 +1,9 @@
 <?php
 class Home extends Controller
 {
-    public function SayHi()
+    public function index()
     {
-        echo 'home-sayhi';
-
-        $a = $this->model('SinhVienModel');
-        echo $a->GetSV();
+        $this->view('Home',[]);
     }
 
     public function Show($n, $m)
