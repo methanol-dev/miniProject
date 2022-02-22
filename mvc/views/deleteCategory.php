@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/miniProject/public/css/style.css">
-    <title>Edit Category</title>
+    <title>Delete Category</title>
 </head>
 
 <body>
-    <form action="http://localhost/miniProject/Category/update/<?php echo $data['category']['id'];?>" method="post" style="width: 500px; margin: 0 auto; margin-top: 150px;">
+    <h2>Bạn có chắc muốn xóa danh mục này?</h2>
+    <form action="http://localhost/miniProject/Category/delete/<?php echo $data['category']['id'];?>" method="post" style="width: 500px; margin: 0 auto; margin-top: 150px;">
         <div class="container">
             <label for="uname"><b>Name</b></label>
             <input type="text" placeholder="Enter Name" name="name" required value="<?php echo $data['category']['name']; ?>">
