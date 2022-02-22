@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <h2>Thêm danh mục</h2>
     <form action="../Category/create" method="post" style="width: 500px; margin: 0 auto; margin-top: 150px;">
         <div class="container">
             <label for="uname"><b>Name</b></label>

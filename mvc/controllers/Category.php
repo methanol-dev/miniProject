@@ -20,7 +20,7 @@ class Category extends Controller
             $description = $_POST['description'];
             $result = $this->model('CategoryModel')->addCategory($name, $description);
             if ($result) {
-                echo 'them thanh cong';
+                header("Location:http://localhost/miniProject/Category");
             } else {
                 echo 'them that bai';
             }

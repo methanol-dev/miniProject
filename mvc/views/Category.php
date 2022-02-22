@@ -23,9 +23,10 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $i = 0; ?>
                 <?php foreach ($data['categories'] as $category) { ?>
                     <tr>
-                        <th scope="row"><?php echo $category['id']; ?></th>
+                        <th scope="row"><?php echo ++$i; ?></th>
                         <td><?php echo $category['name']; ?></td>
                         <td><?php echo $category['description']; ?></td>
                         <td>
