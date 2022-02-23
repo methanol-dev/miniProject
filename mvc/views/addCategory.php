@@ -10,14 +10,19 @@
 </head>
 
 <body>
-    <h2>Thêm danh mục</h2>
+    <h2>Add Category</h2>
     <form action="../Category/create" method="post" style="width: 500px; margin: 0 auto; margin-top: 150px;">
+        <div>
+            <?php if (isset($data['mess'])) {
+                echo "<p style='color:red';>" . $data['mess'] . "</p>";
+            } ?>
+        </div>
         <div class="container">
             <label for="uname"><b>Name</b></label>
-            <input type="text" placeholder="Enter Name" name="name" required>
+            <input type="text" placeholder="Enter Name" name="name">
 
             <label for="psw"><b>Description</b></label>
-            <input type="text" placeholder="Enter Description" name="description" required>
+            <input type="text" placeholder="Enter Description" name="description">
 
             <button type="submit" name="submit">Submit</button>
         </div>

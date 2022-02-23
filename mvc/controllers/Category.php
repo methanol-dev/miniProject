@@ -16,13 +16,17 @@ class Category extends Controller
             $this->view('addCategory', []);
         }
         if (isset($_POST['submit'])) {
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $result = $this->model('CategoryModel')->addCategory($name, $description);
-            if ($result) {
-                header("Location:http://localhost/miniProject/Category");
+            $name = $this->checkInput($_POST['name']);
+            $description = $this->checkInput($_POST['description']);
+            if ($name == '' || $description == '') {
+                $this->view('addCategory', [
+                    'mess' => 'Bạn chưa nhập đủ thông tin',
+                ]);
             } else {
-                echo 'them that bai';
+                $result = $this->model('CategoryModel')->addCategory($name, $description);
+                if ($result) {
+                    header("Location:http://localhost/miniProject/Category");
+                }
             }
         }
     }
@@ -35,31 +39,35 @@ class Category extends Controller
             'category' => $category,
         ]);
         if (isset($_POST['submit'])) {
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $result = $this->model('CategoryModel')->editCategory($id, $name, $description);
-            if ($result) {
-                header("Location:http://localhost/miniProject/Category");
+            $name = $this->checkInput($_POST['name']);
+            $description = $this->checkInput($_POST['description']);
+            if ($name == '' || $description == '') {
+                $this->view('editCategory', [
+                    'mess' => 'Bạn chưa nhập đủ thông tin',
+                ]);
             } else {
-                echo 'sua that bai';
+                $result = $this->model('CategoryModel')->editCategory($id, $name, $description);
+                if ($result) {
+                    header("Location:http://localhost/miniProject/Category");
+                }
             }
         }
     }
 
     public function delete($id)
     {
-        $category = $this->model('CategoryModel')->findCategory($id);
-        $this->view('deleteCategory', [
-            'category' => $category,
-        ]);
-        // $category = $this->model('CategoryModel')->findCategory($id);
-        if (isset($_POST['submit'])) {
-            $result = $this->model('CategoryModel')->deleteCategory($id);
-            if ($result) {
-                header("Location:http://localhost/miniProject/Category");
-            } else {
-                echo 'Xoa that bai';
-            }
+       
+        $result = $this->model('CategoryModel')->deleteCategory($id);
+        if ($result) {
+            header("Location:http://localhost/miniProject/Category");
         }
+    }
+
+    public function checkInput($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 }

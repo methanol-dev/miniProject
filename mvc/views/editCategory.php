@@ -10,7 +10,13 @@
 </head>
 
 <body>
-    <form action="http://localhost/miniProject/Category/update/<?php echo $data['category']['id'];?>" method="post" style="width: 500px; margin: 0 auto; margin-top: 150px;">
+    <h2>Edit Category</h2>
+    <form action="http://localhost/miniProject/Category/update/<?php echo $data['category']['id']; ?>" method="post" style="width: 500px; margin: 0 auto; margin-top: 150px;">
+        <div>
+            <?php if (isset($data['mess'])) {
+                echo "<p style='color:red;'>" . $data['mess'] . "</p>";
+            } ?>
+        </div>
         <div class="container">
             <label for="uname"><b>Name</b></label>
             <input type="text" placeholder="Enter Name" name="name" required value="<?php echo $data['category']['name']; ?>">
